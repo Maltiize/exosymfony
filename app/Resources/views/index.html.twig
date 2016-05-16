@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Hello {% endblock %}
+{% block body %}
+
+    {% for addr in list %}
+        Name book : {{ addr.name }}
+        Id book :{{ addr.id }} </br>
+        <a href=" {{  path('addrBookIndex', {'id': addr.id})}}"> see content </a></br> </br>
+    {% endfor %}
+    <a href="{{ path('addrAddBook')}}"> add a new book</a>
+
+
+{% endblock %}

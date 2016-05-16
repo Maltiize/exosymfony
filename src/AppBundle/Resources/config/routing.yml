@@ -1,0 +1,4 @@
+
+hello_the_world:
+    path:     /address/{name}
+    defaults: { _controller: AppBundle:Address:index }

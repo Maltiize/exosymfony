@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Hello {% endblock %}
+{% block body %}
+
+{% for addr in listAddr %}
+    {{ addr.nom }}
+    {{ addr.prenom }}
+    {{ addr.numero }}
+    {{ addr.id }}
+    <a href="{{ path('addrEdit', {'id': addr.id}) }}"> edit </a>  <a href="{{ path('addrDelete', {'id': addr.id}) }}"> delete </a> </br> </br>
+{% endfor %}
+    <a href="{{ path('addrAdd', {'id': idBook}) }}"> Add new contact </a>
+
+
+{% endblock %}
