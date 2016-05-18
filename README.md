@@ -9,17 +9,22 @@ le serveur sera lancé sur localhost:8000
 
 J'ai codé ce projet avec Mamp comme service Web 
 
-Il faut donc que vous adaptiez les parametres pour que l'appli puisse se connecter à votre base de donnée 
+Il faut donc que vous adaptiez les parametres pour que l'appli puisse se connecter à votre base de donnée locale
 
 de même un php bin/console doctrine:schema:update --dump-sql sera necessaire 
 
 afin de synchroniser mes objets avec votre base 
 
-je n'avais pas beaucoup  de temps pour apprendre/configurer symfony2 ( 2 jours c'est courts) donc je suis resté au stricte minimum cad :
+je n'avais pas beaucoup  de temps pour apprendre/configurer symfony2 ( je partais de 0 et 2 jours c'est court) donc je suis resté au stricte minimum cad :
+
 		- pas de css 
+
 		- pas de verification sur chaque page que l'utilisateur ne modifie pas des données auxquel il n'aurait pas le droit 
+
 		- et malheuresement je n'ai pas reussis à faire en sorte que les utilisateurs puissent être des contacts ( je sais comment le faire mais j'ai plus de temps )
 néanmoins 
+
 		- systeme d'authentification fonctionne 
+
 		- rajout affichage edition des données aussi 
-		
+
