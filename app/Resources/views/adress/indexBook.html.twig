@@ -2,15 +2,71 @@
 
 {% block title %} Hello {% endblock %}
 {% block body %}
+    {% set cpt= 1 %}
+    <h3>Type : contacts hors application</h3>
 
-{% for addr in listAddr %}
-    {{ addr.nom }}
-    {{ addr.prenom }}
-    {{ addr.numero }}
-    {{ addr.id }}
-    <a href="{{ path('addrEdit', {'id': addr.id}) }}"> edit </a>  <a href="{{ path('addrDelete', {'id': addr.id}) }}"> delete </a> </br> </br>
-{% endfor %}
-    <a href="{{ path('addrAdd', {'id': idBook}) }}"> Add new contact </a>
+    {% for addr in listAddr %}
+        {% if cpt%3==0 and not cpt==0 %}
+            <div class="row">
+        {% endif %}
+        <div class="col-md-4 portfolio-item">
 
+            <h3>
+                <a href="#">{{ addr.nom }}{{ addr.prenom }} </a>
+            </h3>
+            <div class="row">
+                <ul>
+                    <li> nom : {{ addr.nom }} </li>
+                    <li>prenom : {{ addr.prenom }}</li>
+                    <li>numero : {{ addr.numero }}</li>
+                </ul>
+            </div>
+            <div class="row">
+                <div class="col-md-1"></div>
+                <a class="btn btn-default" href="{{ path('addrEdit', {'id': addr.id}) }}" role="button">edit</a>
+                <a class="btn btn-default" href="{{ path('addrDelete', {'id': addr.id}) }}" role="button">delete</a>
+            </div>
+        </div>
+        {% if cpt%3==0 and not cpt==0 %}
+            </div>
+        {% endif %}
+        {% set cpt=cpt+1%}
 
+    {% endfor %}
+    <div class="row"></div>
+    {% set cpt=1%}
+    <h3>Type : contacts application</h3>
+
+    {% for addr in listUser %}
+        {% if cpt%3==0 and not cpt==0 %}
+            <div class="row">
+        {% endif %}
+
+        <div class="col-md-4 portfolio-item">
+
+            <h3>
+                <a href="#">{{ addr.nom }}{{ addr.prenom }} </a>
+            </h3>
+            <div class="row">
+                <ul>
+                    <li> nom : {{ addr.nom }} </li>
+                    <li>prenom : {{ addr.prenom }}</li>
+                    <li>numero : {{ addr.numero }}</li>
+                </ul>
+            </div>
+            <div class="row">
+                <div class="col-md-1"></div>
+                <a class="btn btn-default" href="{{ path('addrDeleteUser', {'iduser': addr.id,'id':idBook }) }}" role="button">delete</a>
+            </div>
+        </div>
+        {% if cpt%3==0 and not cpt==0 %}
+            </div>
+        {% endif %}
+    {% endfor %}
+    <div class="row"></div>
+
+    <div class=="row">
+        <a href="{{ path('addrAdd', {'id': idBook}) }}"> Add new contact </a> </br> </br>
+        <a href="{{ path('addrAddUser', {'id': idBook}) }}"> Add an existing contact in the book</a>
+    </div>
 {% endblock %}

@@ -15,16 +15,11 @@ de même un php bin/console doctrine:schema:update --dump-sql sera necessaire
 
 afin de synchroniser mes objets avec votre base 
 
-je n'avais pas beaucoup  de temps pour apprendre/configurer symfony2 ( je partais de 0 et 2 jours c'est court) donc je suis resté au stricte minimum cad :
-
-		- pas de css 
+Ce qu'il manque :
 
 		- pas de verification sur chaque page que l'utilisateur ne modifie pas des données auxquel il n'aurait pas le droit 
 
-		- et malheuresement je n'ai pas reussis à faire en sorte que les utilisateurs puissent être des contacts ( je sais comment le faire mais j'ai plus de temps )
-néanmoins 
 
-		- systeme d'authentification fonctionne 
+		- Probleme sur la suppression des addresses "d'utilisateurs"
 
-		- rajout affichage edition des données aussi 
-
+		- FOSrestbundle

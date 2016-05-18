@@ -862,7 +862,7 @@ $this,
 CacheItem::class
 );
 }
-public static function createSystemCache($namespace, $defaultLifetime, $nonce, $directory, LoggerInterface $logger = null)
+public static function createSystemCache($namespace, $defaultLifetime, $version, $directory, LoggerInterface $logger = null)
 {
 $fs = new FilesystemAdapter($namespace, $defaultLifetime, $directory);
 if (null !== $logger) {
@@ -871,7 +871,7 @@ $fs->setLogger($logger);
 if (!ApcuAdapter::isSupported()) {
 return $fs;
 }
-$apcu = new ApcuAdapter($namespace, $defaultLifetime / 5, $nonce);
+$apcu = new ApcuAdapter($namespace, $defaultLifetime / 5, $version);
 if (null !== $logger) {
 $apcu->setLogger($logger);
 }

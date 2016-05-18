@@ -10,8 +10,6 @@ class __TwigTemplate_b5007c05490b1e91308ca2ea1afe90da0de2da12917a75914f3dca69911
         $this->parent = false;
 
         $this->blocks = array(
-            'title' => array($this, 'block_title'),
-            'stylesheets' => array($this, 'block_stylesheets'),
             'body' => array($this, 'block_body'),
             'javascripts' => array($this, 'block_javascripts'),
         );
@@ -19,84 +17,119 @@ class __TwigTemplate_b5007c05490b1e91308ca2ea1afe90da0de2da12917a75914f3dca69911
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_a8f2cac38f0627533a7517a941176b0a09adfabca1d202adc4f5bbebc3acaefe = $this->env->getExtension("native_profiler");
-        $__internal_a8f2cac38f0627533a7517a941176b0a09adfabca1d202adc4f5bbebc3acaefe->enter($__internal_a8f2cac38f0627533a7517a941176b0a09adfabca1d202adc4f5bbebc3acaefe_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "base.html.twig"));
+        $__internal_ba343d553e96670cedc69c9ab3ab443bf173d66462116eb5bfdaceaf74d54561 = $this->env->getExtension("native_profiler");
+        $__internal_ba343d553e96670cedc69c9ab3ab443bf173d66462116eb5bfdaceaf74d54561->enter($__internal_ba343d553e96670cedc69c9ab3ab443bf173d66462116eb5bfdaceaf74d54561_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "base.html.twig"));
 
         // line 1
         echo "<!DOCTYPE html>
 <html>
     <head>
-        <meta charset=\"UTF-8\" />
-        <title>";
-        // line 5
-        $this->displayBlock('title', $context, $blocks);
-        echo "</title>
-        ";
-        // line 6
-        $this->displayBlock('stylesheets', $context, $blocks);
-        // line 7
-        echo "        <link rel=\"icon\" type=\"image/x-icon\" href=\"";
-        echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("favicon.ico"), "html", null, true);
-        echo "\" />
+        <meta charset=\"utf-8\">
+        <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">
+        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">
+        <meta name=\"description\" content=\"mon petit exo symfony2\">
+        <meta name=\"author\" content=\"Maltiize\">
+        <link href=\"";
+        // line 9
+        echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("css/bootstrap.min.css"), "html", null, true);
+        echo "\" rel=\"stylesheet\">
+        <link href=\"";
+        // line 10
+        echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("css/3-col-portfolio.css"), "html", null, true);
+        echo "\" rel=\"stylesheet\">
+        <title>AppAdressBook</title>
+
     </head>
     <body>
+    <nav class=\"navbar navbar-inverse navbar-fixed-top\" role=\"navigation\">
+        <div class=\"container\">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class=\"navbar-header\">
+                <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\"#bs-example-navbar-collapse-1\">
+                    <span class=\"sr-only\">Toggle navigation</span>
+                    <span class=\"icon-bar\"></span>
+                    <span class=\"icon-bar\"></span>
+                    <span class=\"icon-bar\"></span>
+                </button>
+                <a class=\"navbar-brand\" href=\"#\">";
+        // line 25
+        echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "user", array()), "prenom", array()), "html", null, true);
+        echo " ";
+        echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "user", array()), "nom", array()), "html", null, true);
+        echo " </a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class=\"collapse navbar-collapse\" id=\"bs-example-navbar-collapse-1\">
+                <ul class=\"nav navbar-nav\">
+                    <li>
+                        <a href=\"";
+        // line 31
+        echo $this->env->getExtension('routing')->getPath("fos_user_registration_register");
+        echo "\">Register</a>
+                    </li>
+                    <li>
+                        <a href=\"";
+        // line 34
+        echo $this->env->getExtension('routing')->getPath("fos_user_security_logout");
+        echo "\">Logout</a>
+                    </li>
+                    <li>
+                        <a href=\"";
+        // line 37
+        echo $this->env->getExtension('routing')->getPath("index");
+        echo "\">Home</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+    <div class=\"container\">
         ";
-        // line 10
+        // line 46
         $this->displayBlock('body', $context, $blocks);
-        // line 11
-        echo "        ";
+        // line 47
+        echo "    </div>
+        <script src=\"";
+        // line 48
+        echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("js/jquery.js"), "html", null, true);
+        echo "\"></script>
+        <script src=\"";
+        // line 49
+        echo twig_escape_filter($this->env, $this->env->getExtension('asset')->getAssetUrl("js/bootstrap.min.js"), "html", null, true);
+        echo "\"></script>
+        ";
+        // line 50
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 12
+        // line 51
         echo "    </body>
 </html>
 ";
         
-        $__internal_a8f2cac38f0627533a7517a941176b0a09adfabca1d202adc4f5bbebc3acaefe->leave($__internal_a8f2cac38f0627533a7517a941176b0a09adfabca1d202adc4f5bbebc3acaefe_prof);
+        $__internal_ba343d553e96670cedc69c9ab3ab443bf173d66462116eb5bfdaceaf74d54561->leave($__internal_ba343d553e96670cedc69c9ab3ab443bf173d66462116eb5bfdaceaf74d54561_prof);
 
     }
 
-    // line 5
-    public function block_title($context, array $blocks = array())
-    {
-        $__internal_7c2a872730506aeb4a33984dd041c202378ef9212bb34cb833079b35ad7dbfb8 = $this->env->getExtension("native_profiler");
-        $__internal_7c2a872730506aeb4a33984dd041c202378ef9212bb34cb833079b35ad7dbfb8->enter($__internal_7c2a872730506aeb4a33984dd041c202378ef9212bb34cb833079b35ad7dbfb8_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
-
-        echo "Welcome!";
-        
-        $__internal_7c2a872730506aeb4a33984dd041c202378ef9212bb34cb833079b35ad7dbfb8->leave($__internal_7c2a872730506aeb4a33984dd041c202378ef9212bb34cb833079b35ad7dbfb8_prof);
-
-    }
-
-    // line 6
-    public function block_stylesheets($context, array $blocks = array())
-    {
-        $__internal_cb9bc04f41699f1d94e727fd8bacb2058ebe74ea646d79060977f441dcbc6449 = $this->env->getExtension("native_profiler");
-        $__internal_cb9bc04f41699f1d94e727fd8bacb2058ebe74ea646d79060977f441dcbc6449->enter($__internal_cb9bc04f41699f1d94e727fd8bacb2058ebe74ea646d79060977f441dcbc6449_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "stylesheets"));
-
-        
-        $__internal_cb9bc04f41699f1d94e727fd8bacb2058ebe74ea646d79060977f441dcbc6449->leave($__internal_cb9bc04f41699f1d94e727fd8bacb2058ebe74ea646d79060977f441dcbc6449_prof);
-
-    }
-
-    // line 10
+    // line 46
     public function block_body($context, array $blocks = array())
     {
-        $__internal_49bf6667468f442d101bf27486d2f4d3143e0b227eae8e21f5be42e3fb381f58 = $this->env->getExtension("native_profiler");
-        $__internal_49bf6667468f442d101bf27486d2f4d3143e0b227eae8e21f5be42e3fb381f58->enter($__internal_49bf6667468f442d101bf27486d2f4d3143e0b227eae8e21f5be42e3fb381f58_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
+        $__internal_45d6680ee7cd968c1669358ad9681593b2515eb626435ba7abf312016cc0824c = $this->env->getExtension("native_profiler");
+        $__internal_45d6680ee7cd968c1669358ad9681593b2515eb626435ba7abf312016cc0824c->enter($__internal_45d6680ee7cd968c1669358ad9681593b2515eb626435ba7abf312016cc0824c_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "body"));
 
         
-        $__internal_49bf6667468f442d101bf27486d2f4d3143e0b227eae8e21f5be42e3fb381f58->leave($__internal_49bf6667468f442d101bf27486d2f4d3143e0b227eae8e21f5be42e3fb381f58_prof);
+        $__internal_45d6680ee7cd968c1669358ad9681593b2515eb626435ba7abf312016cc0824c->leave($__internal_45d6680ee7cd968c1669358ad9681593b2515eb626435ba7abf312016cc0824c_prof);
 
     }
 
-    // line 11
+    // line 50
     public function block_javascripts($context, array $blocks = array())
     {
-        $__internal_53c7bdac1e0621676068ee55a68b92f5341aa10c2dc6f40af969ec14ebff5570 = $this->env->getExtension("native_profiler");
-        $__internal_53c7bdac1e0621676068ee55a68b92f5341aa10c2dc6f40af969ec14ebff5570->enter($__internal_53c7bdac1e0621676068ee55a68b92f5341aa10c2dc6f40af969ec14ebff5570_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
+        $__internal_c131760d3b470b7069ed16ba196fcfd0652a3364de863b5b7408d84cb972e3a8 = $this->env->getExtension("native_profiler");
+        $__internal_c131760d3b470b7069ed16ba196fcfd0652a3364de863b5b7408d84cb972e3a8->enter($__internal_c131760d3b470b7069ed16ba196fcfd0652a3364de863b5b7408d84cb972e3a8_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascripts"));
 
         
-        $__internal_53c7bdac1e0621676068ee55a68b92f5341aa10c2dc6f40af969ec14ebff5570->leave($__internal_53c7bdac1e0621676068ee55a68b92f5341aa10c2dc6f40af969ec14ebff5570_prof);
+        $__internal_c131760d3b470b7069ed16ba196fcfd0652a3364de863b5b7408d84cb972e3a8->leave($__internal_c131760d3b470b7069ed16ba196fcfd0652a3364de863b5b7408d84cb972e3a8_prof);
 
     }
 
@@ -112,19 +145,58 @@ class __TwigTemplate_b5007c05490b1e91308ca2ea1afe90da0de2da12917a75914f3dca69911
 
     public function getDebugInfo()
     {
-        return array (  93 => 11,  82 => 10,  71 => 6,  59 => 5,  50 => 12,  47 => 11,  45 => 10,  38 => 7,  36 => 6,  32 => 5,  26 => 1,);
+        return array (  126 => 50,  115 => 46,  106 => 51,  104 => 50,  100 => 49,  96 => 48,  93 => 47,  91 => 46,  79 => 37,  73 => 34,  67 => 31,  56 => 25,  38 => 10,  34 => 9,  24 => 1,);
     }
 }
 /* <!DOCTYPE html>*/
 /* <html>*/
 /*     <head>*/
-/*         <meta charset="UTF-8" />*/
-/*         <title>{% block title %}Welcome!{% endblock %}</title>*/
-/*         {% block stylesheets %}{% endblock %}*/
-/*         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />*/
+/*         <meta charset="utf-8">*/
+/*         <meta http-equiv="X-UA-Compatible" content="IE=edge">*/
+/*         <meta name="viewport" content="width=device-width, initial-scale=1">*/
+/*         <meta name="description" content="mon petit exo symfony2">*/
+/*         <meta name="author" content="Maltiize">*/
+/*         <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">*/
+/*         <link href="{{ asset('css/3-col-portfolio.css') }}" rel="stylesheet">*/
+/*         <title>AppAdressBook</title>*/
+/* */
 /*     </head>*/
 /*     <body>*/
+/*     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">*/
+/*         <div class="container">*/
+/*             <!-- Brand and toggle get grouped for better mobile display -->*/
+/*             <div class="navbar-header">*/
+/*                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">*/
+/*                     <span class="sr-only">Toggle navigation</span>*/
+/*                     <span class="icon-bar"></span>*/
+/*                     <span class="icon-bar"></span>*/
+/*                     <span class="icon-bar"></span>*/
+/*                 </button>*/
+/*                 <a class="navbar-brand" href="#">{{ app.user.prenom }} {{ app.user.nom }} </a>*/
+/*             </div>*/
+/*             <!-- Collect the nav links, forms, and other content for toggling -->*/
+/*             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">*/
+/*                 <ul class="nav navbar-nav">*/
+/*                     <li>*/
+/*                         <a href="{{ path('fos_user_registration_register') }}">Register</a>*/
+/*                     </li>*/
+/*                     <li>*/
+/*                         <a href="{{ path('fos_user_security_logout') }}">Logout</a>*/
+/*                     </li>*/
+/*                     <li>*/
+/*                         <a href="{{ path('index') }}">Home</a>*/
+/*                     </li>*/
+/*                 </ul>*/
+/*             </div>*/
+/*             <!-- /.navbar-collapse -->*/
+/*         </div>*/
+/*         <!-- /.container -->*/
+/*     </nav>*/
+/*     <div class="container">*/
 /*         {% block body %}{% endblock %}*/
+/*     </div>*/
+/*         <script src="{{ asset('js/jquery.js') }}"></script>*/
+/*         <script src="{{ asset('js/bootstrap.min.js') }}"></script>*/
 /*         {% block javascripts %}{% endblock %}*/
 /*     </body>*/
 /* </html>*/

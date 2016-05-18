@@ -106,9 +106,17 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'addrAdd')), array (  '_controller' => 'AppBundle\\Controller\\AddressController::addAction',));
             }
 
-            // addrDelete
-            if (0 === strpos($pathinfo, '/address/delete') && preg_match('#^/address/delete/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'addrDelete')), array (  '_controller' => 'AppBundle\\Controller\\AddressController::deleteAction',));
+            if (0 === strpos($pathinfo, '/address/delete')) {
+                // addrDelete
+                if (preg_match('#^/address/delete/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'addrDelete')), array (  '_controller' => 'AppBundle\\Controller\\AddressController::deleteAction',));
+                }
+
+                // addrDeleteUser
+                if (preg_match('#^/address/delete/(?P<id>[^/]++)/(?P<iduser>[^/]+)\\}$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'addrDeleteUser')), array (  '_controller' => 'AppBundle\\Controller\\AddressController::deleteUserAction',));
+                }
+
             }
 
             // addrEdit
@@ -119,6 +127,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             // addrIndex
             if (preg_match('#^/address/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'addrIndex')), array (  '_controller' => 'AppBundle\\Controller\\AddressController::indexAction',));
+            }
+
+            // addrAddUser
+            if (0 === strpos($pathinfo, '/address/add/user') && preg_match('#^/address/add/user/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'addrAddUser')), array (  '_controller' => 'AppBundle\\Controller\\AddressController::addUserAction',));
             }
 
         }

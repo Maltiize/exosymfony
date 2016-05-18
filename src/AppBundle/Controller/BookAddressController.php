@@ -45,20 +45,18 @@ class BookAddressController extends Controller
      */
     public function PrintAction($id)
     {
-        $repositoryAdd = $this
-        ->getDoctrine()
-        ->getManager()
-        ->getRepository('AppBundle:Address');
+
         $repositoryBook = $this
             ->getDoctrine()
             ->getManager()
             ->getRepository('AppBundle:AddressBook');
+
+
         $List = $repositoryBook->find($id);
-        $li=$repositoryAdd->findBy(
-            array('addressBook' => $List)
-        );
+        dump($List->getAddress());
         return $this->render('adress/indexBook.html.twig', array(
-            'listAddr' => $li,
+            'listAddr' => $List->getAddress(),
+            'listUser'=>$List->getUserAddress(),
             'idBook' => $id
         ));
 

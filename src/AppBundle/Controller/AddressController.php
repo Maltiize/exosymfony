@@ -3,14 +3,14 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\AddressBook;
+use AppBundle\Entity\User;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Entity\Address;
+use AppBundle\Form\AddAddrType;
+use AppBundle\Form\GetUserType;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+
 
 class AddressController extends Controller
 {
@@ -26,13 +26,7 @@ class AddressController extends Controller
             ->getRepository('AppBundle:AddressBook');
         $test = $repository->find($id);
         $advert = new Address();
-        $form = $this->createFormBuilder($advert)
-            ->add('nom', TextType::class)
-            ->add('prenom', TextType::class)
-            ->add('numero', TextType::class)
-            ->add('submit', SubmitType::class, array('label' => 'YOOOOO'))
-            ->getForm();
-
+        $form = $this->createForm(AddAddrType::class, $advert);
         $form->handleRequest($request);
         if ($form->isSubmitted()) {
             $advert
@@ -77,24 +71,43 @@ class AddressController extends Controller
 
     }
     /**
+     * @Route("/address/delete/{id}/{iduser}}",name="addrDeleteUser")
+     */
+    public function deleteUserAction($id,$iduser)
+    {
+        // On crée un objet Advert
+        $repository = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('AppBundle:AddressBook');
+        $repositoryUser = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('AppBundle:User');
+        $user=$repositoryUser->find($iduser);
+        $rep = $repository->find($id);
+        $rep->removeUserAddress($user);
+        $this->getDoctrine()->getManager()->flush();
+
+
+        return $this->render('adress/deleteAddr.html.twig', array(
+            'id' => $rep->getId()
+        ));
+
+
+    }
+    /**
      * @Route("/address/edit/{id}",name="addrEdit")
      */
     public function editAction($id, Request $request)
     {
-        // On crée un objet Advert
         $id = intval($id);
         $repository = $this
             ->getDoctrine()
             ->getManager()
             ->getRepository('AppBundle:Address');
         $tmp = $repository->find($id);
-        $form = $this->createFormBuilder($tmp)
-            ->add('nom', TextType::class)
-            ->add('prenom', TextType::class)
-            ->add('numero', TextType::class)
-            ->add('submit', SubmitType::class, array('label' => 'YOOOOO'))
-            ->getForm();
-
+        $form = $this->createForm(AddAddrType::class, $tmp);
         $form->handleRequest($request);
         if ($form->isSubmitted()) {
             $tmp
@@ -127,6 +140,44 @@ class AddressController extends Controller
         return $this->render('adress/index.html.twig', array(
             'test' => $test,
         ));
+
+    }
+    /**
+     * @Route("/address/add/user/{id}",name="addrAddUser")
+     */
+    public function addUserAction($id, Request $request)
+    {
+        // On crée un objet Advert
+        $repository = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('AppBundle:AddressBook');
+        $repositoryUser = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('AppBundle:User');
+        $test = $repository->find($id);
+        $form = $this->createForm(GetUserType::class, new User());
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted()) {
+            $em = $this
+                ->getDoctrine()
+                ->getManager();
+            $li=$repositoryUser->findBy(
+                array('nom' => $form['nom']->getData(),
+            'prenom' =>$form['prenom']->getData())
+            );
+            if($li)
+                $test->addUser($li[0]);
+
+            $em->flush();
+
+        }
+        return $this->render('adress/addAddr.html.twig', array(
+            'form' => $form->createView(),
+        ));
+
 
     }
 

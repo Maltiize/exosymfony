@@ -37,10 +37,15 @@ class AddressBook
     /**
      * @var ArrayCollection $address
      *
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\AddressBook", mappedBy="$addressBook", cascade={"persist", "remove", "merge"})
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Address", mappedBy="addressBook", cascade={"persist", "remove", "merge"})
      */
 
     private $address;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\User", cascade={"persist"})
+     */
+    private $useraddress;
 
     /**
      * Get id
@@ -96,6 +101,8 @@ class AddressBook
     public function __construct()
     {
         $this->address = new ArrayCollection();
+        $this->useraddress = new ArrayCollection();
+
     }
     /**
      * Set setUser
@@ -119,6 +126,29 @@ class AddressBook
     {
         return $this->user;
     }
+    public function addUser(User $user)
+    {
+        // Si l'objet fait déjà partie de la collection on ne l'ajoute pas
+        if (!$this->useraddress->contains($user)) {
+            $this->useraddress->add($user);
+        }
+        return $this;
+    }
+
+    public function removeUserAddress(User $user)
+    {
+        // Si l'objet fait déjà partie de la collection on ne l'ajoute pas
+        if (!$this->useraddress->contains($user)) {
+            $this->useraddress->removeElement($user);
+        }
+        return $this;
+    }
+
+    public function getUserAddress()
+    {
+        return $this->useraddress;
+    }
+
 
 }
 

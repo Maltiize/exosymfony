@@ -43,7 +43,7 @@ class Address
     private $numero;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\AddressBook")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\AddressBook",inversedBy="address")
      * @ORM\JoinColumn(nullable=false)
      */
     private $addressBook;
