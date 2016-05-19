@@ -14,7 +14,6 @@ class UserController extends Controller
      * Collection get action
      * @var Request $request
      * @return array
-     * @Route(name="apiUserAll")
      * @Rest\View
      */
     public function allAction(Request $request)
