@@ -1,4 +1,12 @@
 
-hello_the_world:
-    path:     /address/{name}
-    defaults: { _controller: AppBundle:Address:index }
+user_all:
+    pattern:  api/users
+    defaults: { _controller: AppBundle:User:all, _format: json }
+    requirements:
+        _method: GET
+
+user_get:
+    pattern:  api/users/{id}
+    defaults: { _controller: AppBundle:User:get, _format: json }
+    requirements:
+        _method: GET
