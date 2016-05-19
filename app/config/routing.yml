@@ -4,3 +4,8 @@ app:
 
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+
+userapi:
+    type: rest
+    resource: "@AppBundle/Resources/config/routing.yml"

@@ -74,3 +74,14 @@ fos_user:
     registration:
         form:
             type: AppBundle\Form\RegistrationType
+
+sensio_framework_extra:
+    view:
+        annotations: true
+
+fos_rest:
+    param_fetcher_listener: true
+    body_listener: true
+    format_listener: true
+    view:
+        view_response_listener: 'force'
