@@ -15,11 +15,20 @@ de même un php bin/console doctrine:schema:update --dump-sql sera necessaire
 
 afin de synchroniser mes objets avec votre base 
 
+De plus git ne semble pas vouloir mettre l'intégraité de /vendor dans mon repo 
+
+Pour faire marcher l'application il faudra donc 
+
+		- rm rf /vendor 
+
+		- composer install ou composer.phar install si composer n'est pas installé globalement dans votre système
+
+
 Ce qu'il manque :
 
-		- pas de verification sur chaque page que l'utilisateur ne modifie pas des données auxquel il n'aurait pas le droit 
+		- verification sur chaque page que l'utilisateur ne modifie pas des données auxquel il n'aurait pas le droit 
 
 
 		- Probleme sur la suppression des addresses "d'utilisateurs"
 
-		- FOSrestbundle
+		
