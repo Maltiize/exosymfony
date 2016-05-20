@@ -53,6 +53,11 @@ class BookAddressController extends Controller
 
 
         $List = $repositoryBook->find($id);
+        if($List->getUser()!=$this->getUser())
+            return $this->render('adress/error.html.twig', array(
+                'error' => "Vous n'êtes pas propriétaire de ce carnet d'addresse"
+            ));
+
         dump($List->getAddress());
         return $this->render('adress/indexBook.html.twig', array(
             'listAddr' => $List->getAddress(),

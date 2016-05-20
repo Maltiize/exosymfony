@@ -25,6 +25,10 @@ class AddressController extends Controller
             ->getManager()
             ->getRepository('AppBundle:AddressBook');
         $test = $repository->find($id);
+        if($test->getUser()!=$this->getUser())
+            return $this->render('adress/error.html.twig', array(
+                'error' => "Vous n'êtes pas propriétaire de ce carnet d'addresse"
+            ));
         $advert = new Address();
         $form = $this->createForm(AddAddrType::class, $advert);
         $form->handleRequest($request);
@@ -59,6 +63,10 @@ class AddressController extends Controller
             ->getRepository('AppBundle:Address');
         $test = $repository->find($id);
         $rep= $test->getAddressBook();
+        if($rep->getUser()!=$this->getUser())
+            return $this->render('adress/error.html.twig', array(
+                'error' => "Vous n'êtes pas propriétaire de ce carnet d'addresse"
+            ));
         $em=$this->getDoctrine()->getManager();
         $em->remove($test);
         $em->flush();
@@ -80,12 +88,17 @@ class AddressController extends Controller
             ->getDoctrine()
             ->getManager()
             ->getRepository('AppBundle:AddressBook');
+
         $repositoryUser = $this
             ->getDoctrine()
             ->getManager()
             ->getRepository('AppBundle:User');
         $user=$repositoryUser->find($iduser);
         $rep = $repository->find($id);
+        if($rep->getUser()!=$this->getUser())
+            return $this->render('adress/error.html.twig', array(
+                'error' => "Vous n'êtes pas propriétaire de ce carnet d'addresse"
+            ));
         $rep->removeUserAddress($user);
         $this->getDoctrine()->getManager()->flush();
 
@@ -107,6 +120,11 @@ class AddressController extends Controller
             ->getManager()
             ->getRepository('AppBundle:Address');
         $tmp = $repository->find($id);
+        $tmp->getAddressBook();
+        if($tmp->getUser()!=$this->getUser())
+            return $this->render('adress/error.html.twig', array(
+                'error' => "Vous n'êtes pas propriétaire de ce carnet d'addresse"
+            ));
         $form = $this->createForm(AddAddrType::class, $tmp);
         $form->handleRequest($request);
         if ($form->isSubmitted()) {
@@ -157,6 +175,10 @@ class AddressController extends Controller
             ->getManager()
             ->getRepository('AppBundle:User');
         $test = $repository->find($id);
+        if($test->getUser()!=$this->getUser())
+            return $this->render('adress/error.html.twig', array(
+                'error' => "Vous n'êtes pas propriétaire de ce carnet d'addresse"
+            ));
         $form = $this->createForm(GetUserType::class, new User());
         $form->handleRequest($request);
 
