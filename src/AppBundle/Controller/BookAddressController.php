@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 use AppBundle\Entity\AddressBook;
+use FOS\RestBundle\Controller\Annotations as Rest;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -66,6 +67,31 @@ class BookAddressController extends Controller
         ));
 
 
+    }
+    /**
+     * Collection get action
+     * @var Request $request
+     * @return array
+     *
+     * @Rest\View
+     */
+    public function getAction(Request $request,$id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $entity = $em->getRepository('AppBundle:AddressBook')->find($id);
+        $data = array();
+        foreach($entity->getUserAddress() as $var){
+            $tmp['numero']=$var->getNumero();
+            $tmp['nom']=$var->getNom();
+            $tmp['prenom']=$var->getPrenom();
+            $tmp['id']=$var->getId();
+            $data[]=$tmp;
+        }
+
+        return array(
+            'User' => $data,
+            'Address' => $entity->getAddress()
+        );
     }
 
 }
