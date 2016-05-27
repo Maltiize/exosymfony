@@ -59,7 +59,6 @@ class BookAddressController extends Controller
                 'error' => "Vous n'êtes pas propriétaire de ce carnet d'addresse"
             ));
 
-        dump($List->getAddress());
         return $this->render('adress/indexBook.html.twig', array(
             'listAddr' => $List->getAddress(),
             'listUser'=>$List->getUserAddress(),
